@@ -46,7 +46,8 @@ if(isset($_POST['search'])){
           h1{
               padding-left: 20px;
             padding-top: 25px;
-          }
+            color:#7cadff;
+            }
          
         h5 {
             color: #1d2126;
