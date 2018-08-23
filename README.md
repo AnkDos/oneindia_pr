@@ -3,6 +3,10 @@
 ## To Run :
 for running the project visit the link  : http://vez.hgf.mybluehost.me/oneindia .
 
+## Note : Sometimes it is required to press ctrl+f5 (Hard Refresh the browser) for cache issue .
+
+## Steps :
+
 ### 1. The user will land on the search panel which would look like this : 
 ![alt text](https://raw.githubusercontent.com/AnkDos/oneindia_pr/master/screenshots/search_panel.png)
 
