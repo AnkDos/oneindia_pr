@@ -1,10 +1,10 @@
 <?php
 //Created By Ankur(AnkDos)
-require 'con.php';
-if(isset($_POST['search'])){
+require 'con.php';                 //connection file
+if(isset($_POST['search'])){            // if search button is clicked
     
     $source=trim($_POST['src']);
-    $destination=trim($_POST['dst']);
+    $destination=trim($_POST['dst']);    //taking data from the form
     $dat = $_POST['dte'];
     
     $nos = trim($_POST['psgr']);
@@ -13,7 +13,7 @@ if(isset($_POST['search'])){
           echo "<script> alert('Source and Destinations are same.Scroll Up to Re-enter') ; </script>"; 
     }
     else{
-    $query=mysqli_query($con,"select * from flights where source = '$source' AND destination = '$destination'");
+    $query=mysqli_query($con,"select * from flights where source = '$source' AND destination = '$destination'");  //running sql query for taking out the data
     $fetch=true;
     }
 }
@@ -24,7 +24,10 @@ if(isset($_POST['search'])){
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
+   
+    <!-- CSS starts  -->   
+    
+    <style>
         #adr {
             height: 200vh;
         }
@@ -91,11 +94,16 @@ if(isset($_POST['search'])){
 
         }
 </style>
+    
+    <!-- CSS ends -->
+    
         </head>
 <body>
 <center><h1> Hello, Welcome To Ank_trips !</h1></center>
 
-        <section id="adr">
+    <!-- Search Panel Design starts -->
+    
+    <section id="adr">
          
 
         <div class="container-fluid vertical">
@@ -161,7 +169,11 @@ if(isset($_POST['search'])){
 
         </section>
 
-        <section id="dr">
+     <!-- Search Panel Design Ends -->
+    
+        
+     <!-- Search Results Design starts -->
+    <section id="dr">
 
 
         <table id="flights">
@@ -175,16 +187,17 @@ if(isset($_POST['search'])){
                 <th>Book Now !</th>
                 
             </tr>
+            
             <?php
             $images =array("1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg");
             if($fetch==true){
-                while($fet=mysqli_fetch_array($query)){    
+                while($fet=mysqli_fetch_array($query)){           //Grabbing the mysql data simultenously     
                 $choose = $images[rand(0,5)];
             ?>
 
-
+            <!-- data from SQL is presented as HTML table  -->
                 <tr>
-                
+                 
                 <td>
                     <img src="imgs/<?php echo $choose; ?>" height="150px" width="150px" />
                     </td>
@@ -203,9 +216,10 @@ if(isset($_POST['search'])){
                     <td>
                         <?php echo $fet['price']; ?> * <?php echo $nos; ?> = <?php echo $fet['price']*$nos; ?> 
                     </td>
-                   
+                      
+                    <!--Book Button that carries the flight id with which we book a flight -->
                     <td>
-                        <a class="btn btn-danger " href="?book=<?php echo $fet['flight_id'];?>"> BOOK </a>
+                        <a class="btn btn-danger " href="?book=<?php echo $fet['flight_id'];?>"> BOOK </a>   
                     </td>
                 </tr>
      <?php
@@ -213,6 +227,7 @@ if(isset($_POST['search'])){
   }
      ?>
      
+            <!--For Insertion of data into SQL and Confirmation Message  -->
      <?php
      if(isset($_GET['book'])){
          $fl_id=$_GET['book'];
