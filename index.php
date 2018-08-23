@@ -1,5 +1,5 @@
 <?php
-//php here
+require 'con.php';
 ?>
 <html>
 <head>
@@ -143,6 +143,30 @@
         </section>
 
         <section id="dr">
+
+
+        <table id="flights">
+            <tr>
+                <th>Image</th>
+                <th>Flight Name</th>
+                <th>Depart Time</th>
+                <th>Destination Arrival Time</th>
+                <th>Total Duration</th>
+                <th>Price</th>
+                <th>Book Now !</th>
+                
+            </tr>
+        
+
+                <tr>
+                    <td>
+                    
+                    </td>
+                 </tr>
+     
+        </table>
+      
+
 
         </section>
 
