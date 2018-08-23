@@ -14,7 +14,11 @@
         #dr {
             height: 200vh;
         }
-
+        .options {
+            margin-top: 40px;
+            margin-left: 400px;
+            margin-right: 400px;
+        }
         h2 {
             color: #1d2126;
             font: Courier;
@@ -34,6 +38,38 @@
 
         form {
             margin-left: 10px;
+        }
+
+        #flights {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+
+        }
+
+        #flights td,
+        #flights th {
+            border: 1px solid #ddd;
+            padding: 8px;
+
+        }
+
+        #flights tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #flights tr:hover {
+            background-color: #ddd;
+            height: 75px;
+        }
+
+        #flights th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #404347;
+            color: white;
+
         }
 </style>
         </head>
