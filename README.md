@@ -1,3 +1,4 @@
 # oneindia_pr
-Link of the project : http://vez.hgf.mybluehost.me/oneindia
 
+# To Run :
+  for running the project visit the link  : http://vez.hgf.mybluehost.me/oneindia .
