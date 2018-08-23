@@ -1,5 +1,23 @@
 <?php
+//Created By Ankur(AnkDos)
 require 'con.php';
+if(isset($_POST['search'])){
+    
+    $source=trim($_POST['src']);
+    $destination=trim($_POST['dst']);
+    $dat = $_POST['dte'];
+    
+    $nos = trim($_POST['psgr']);
+    
+    if($source == $destination){
+          echo "<script> alert('Source and Destinations are same.Scroll Up to Re-enter') ; </script>"; 
+    }
+    else{
+    $query=mysqli_query($con,"select * from flights where source = '$source' AND destination = '$destination'");
+    $fetch=true;
+    }
+}
+
 ?>
 <html>
 <head>
@@ -156,18 +174,58 @@ require 'con.php';
                 <th>Book Now !</th>
                 
             </tr>
-        
+            <?php
+            $images =array("1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg");
+            if($fetch==true){
+                while($fet=mysqli_fetch_array($query)){    
+                $choose = $images[rand(0,5)];
+            ?>
+
 
                 <tr>
-                    <td>
-                    
+                
+                <td>
+                    <img src="imgs/<?php echo $choose; ?>" height="150px" width="150px" />
                     </td>
-                 </tr>
+                    <td>
+                        <?php echo $fet['fl_name']; ?>
+                    </td>
+                    <td>
+                        <?php echo $fet['depart_time']; ?>
+                    </td>
+                    <td>
+                        <?php echo $fet['arr_time']; ?>
+                    </td>
+                    <td>
+                        <?php echo $fet['dur']; ?>
+                    </td>
+                    <td>
+                        <?php echo $fet['price']; ?> * <?php echo $nos; ?> = <?php echo $fet['price']*$nos; ?> 
+                    </td>
+                   
+                    <td>
+                        <a class="btn btn-danger " href="?book=<?php echo $fet['flight_id'];?>"> BOOK </a>
+                    </td>
+                </tr>
+     <?php
+   }
+  }
+     ?>
      
-        </table>
+     <?php
+     if(isset($_GET['book'])){
+         $fl_id=$_GET['book'];
+         $bi="ANK".rand(100,999);
+         
+         $query_insert =mysqli_query($con,"insert into bookings(booking_id,flight_id,date,no_p) values ('$bi','$fl_id','$dat','$nos') ");
+         if($query_insert){
+          echo "<script>alert('Booking Sucessful , Your Booking id is $bi . <br> To Check bookings visit : http://vez.hgf.mybluehost.me/oneindia/booking_sts.php?book_id=YOUR BOOKING ID  '); </script>";
+          }
+         }
+     ?>
       
 
-
+</table>
         </section>
 
 </body>
